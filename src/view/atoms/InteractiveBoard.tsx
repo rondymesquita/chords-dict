@@ -2,6 +2,9 @@ import { Box, Center, Flex, Square, Text } from "@chakra-ui/react";
 import { OnMarkerClick } from "./types";
 import { MarkerModel } from "../../model/markers.model";
 import { Marker } from ".";
+import { Transposer } from "../../util/transposer";
+
+const transposer = new Transposer();
 
 export function InteractiveBoard({
   onMarkerClick,
@@ -16,54 +19,6 @@ export function InteractiveBoard({
     return !!activeMarkers.find((marker: MarkerModel) => {
       return marker.fret === fret && marker.string === string;
     });
-  };
-
-  class CircularLinkedList<T> {
-    public list: Array<T> = [];
-    public index: number = 0;
-    constructor(list: Array<T> = []) {
-      this.list = list;
-    }
-    add(item: T) {
-      this.list.push(item);
-    }
-    next(): T {
-      const item = this.list[this.index++];
-      if (!item) {
-        this.index = 0;
-        return this.list[this.index++];
-      }
-      return item;
-    }
-    indexOf(item: T) {
-      return this.list.indexOf(item);
-    }
-    get(index: number) {
-      return this.list[index];
-    }
-  }
-
-  const chromaticScale = new CircularLinkedList<string>([
-    "C",
-    "C#",
-    "D",
-    "D#",
-    "E",
-    "F",
-    "F#",
-    "G",
-    "G#",
-    "A",
-    "A#",
-    "B",
-  ]);
-
-  const transposeUp = (note: string, fret: number) => {
-    const noteIndex = chromaticScale.indexOf(note);
-    const index = Math.ceil(
-      (noteIndex + fret + 1) % chromaticScale.list.length
-    );
-    return chromaticScale.get(index);
   };
 
   return (
@@ -90,7 +45,7 @@ export function InteractiveBoard({
                   return (
                     <Marker
                       key={`${fret}-${string}`}
-                      note={transposeUp(note, fret)}
+                      note={transposer.transposeUp(note, fret + 1)}
                       isVisible={isMarkerVisible(fret + 1, string + 1)}
                       onClick={() =>
                         onMarkerClick({ fret: fret + 1, string: string + 1 })

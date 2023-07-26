@@ -23,8 +23,8 @@ export function Marker({
       _hover={{
         ".text": !isVisible && {
           visibility: "visible",
-          bgColor: "purple.100",
-          color: "gray.400",
+          bgColor: "primary.200",
+          color: "fg.500",
         },
       }}
     >
@@ -39,8 +39,8 @@ export function Marker({
           p={"2px"}
           sx={
             isVisible && {
-              bgColor: "purple.500",
-              color: "white",
+              bgColor: "primary.500",
+              color: "fg.0",
             }
           }
           // _hover={{

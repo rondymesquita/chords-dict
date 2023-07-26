@@ -2,7 +2,12 @@ import { Box, Flex } from "@chakra-ui/react";
 
 export function Board() {
   return (
-    <Box height={"100%"} width={"980px"} border={"0px"} bgColor={"yellow.200"}>
+    <Box
+      height={"100%"}
+      width={"980px"}
+      border={"0px"}
+      bgColor={"secondary.200"}
+    >
       <Flex
         height={"100%"}
         flexDirection={"row"}
@@ -19,7 +24,7 @@ export function Board() {
                 height={"100%"}
                 width={"50px"}
                 borderRight={"2px"}
-                borderColor={"orange.900"}
+                borderColor={"secondary.900"}
                 flexDirection={"column"}
               ></Flex>
             );

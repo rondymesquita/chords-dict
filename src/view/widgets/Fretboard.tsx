@@ -29,12 +29,17 @@ export function Fretboard() {
     }
   };
 
-  // const tunning = "EBGDAE".split("");
-  const tunning = "DADGAD".split("");
+  const tunning = "EBGDAE".split("");
+  // const tunning = "DADGAD".split("");
 
   return (
     <Flex>
-      <Nut height={"120px"} onNoteClick={addMarkerNote} tunning={tunning} />
+      <Nut
+        height={"120px"}
+        tunning={tunning}
+        onNoteClick={addMarkerNote}
+        activeMarkers={markers}
+      />
       <Box
         height={"120px"}
         width={"100%"}

@@ -1,34 +1,23 @@
 import { extendTheme } from "@chakra-ui/react";
 
 import { colors } from "./colors";
+import { fontFamily, globalStyles } from "./global.styles";
 
-// const fontFamily = 'Lexend, Avenir, Helvetica, Arial, sans-serif';
-// const fontFamily = 'Chivo, Avenir, Helvetica, Arial, sans-serif';
-const fontFamily = "Helvetica, Arial, sans-serif";
-// const fontFamily = "Nunito Sans, Helvetica, Arial, sans-serif";
 const defaultTheme = extendTheme();
 
 console.log(defaultTheme);
 
 export const theme = extendTheme({
   styles: {
-    global: {
-      "*": {
-        boxSizing: "border-box !important",
-      },
-      "html,body": {
-        fontFamily,
-        color: "fg.700",
-        background: "bg.0",
-      },
-      a: {
-        color: "primary.600",
-        textDecoration: "underline",
-      },
-      em: {
-        color: "fg.500",
-      },
-    },
+    global: globalStyles,
+  },
+  colors: {
+    primary: colors.purple,
+    secondary: colors.amber,
+    destructive: colors.plum,
+    bg: { 0: "white", ...colors.slate, 1000: "black" },
+    fg: { 0: "white", ...colors.slate, 1000: "black" },
+    ...colors,
   },
   components: {
     Heading: {
@@ -63,13 +52,5 @@ export const theme = extendTheme({
         borderRadius: "md",
       },
     },
-  },
-  colors: {
-    primary: colors.bic,
-    secondary: colors.slate,
-    destructive: colors.plum,
-    bg: { 0: "white", ...colors.slate },
-    fg: { 0: "black", ...colors.slate },
-    ...colors,
   },
 });
