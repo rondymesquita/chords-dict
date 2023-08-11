@@ -6,17 +6,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { theme } from "./theme/theme";
-import { Fretboard } from "./view/widgets/Fretboard";
+import MainPage from "./view/pages/MainPage";
 
 function App() {
   return (
     <>
       <ChakraProvider theme={theme} resetCSS={true}>
         <Container maxWidth={"container.lg"} p={2}>
-          <Center>
-            <Text as={"h1"}>Dicionário de Acordes</Text>
-          </Center>
-          <Fretboard />
+          <MainPage />
         </Container>
       </ChakraProvider>
     </>

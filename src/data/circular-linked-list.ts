@@ -15,10 +15,38 @@ export class CircularLinkedList<T> {
     }
     return item;
   }
+  prev(): T {
+    this.index--
+    const item = this.list[this.index];
+    if (!item) {
+      this.index = this.list.length;
+      this.index--
+      return this.list[this.index];
+    }
+    return item;
+  }
   indexOf(item: T) {
     return this.list.indexOf(item);
   }
   get(index: number) {
     return this.list[index];
+  }
+  stepUp(step: number) {
+    let item = this.get(this.index);
+    let count = 0
+    while(count <= step) {
+      item = this.next()
+      count++
+    }
+    return item
+  }
+  stepDown(step: number) {
+    let item = this.get(this.index);
+    let count = step
+    while(count > 0) {
+      item = this.prev()
+      count--
+    }
+    return item
   }
 }

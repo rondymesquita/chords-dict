@@ -1,14 +1,25 @@
-import { useState } from "react";
+import { useState } from 'react';
+
+type UseList<T>  = [
+  T[],
+  (item: T) => void,
+  React.Dispatch<React.SetStateAction<T[]>>,
+  () => void,
+]
 
 export function useList<T = any>(
   initialValue: Array<T>
-): [T[], (item: T) => void, React.Dispatch<React.SetStateAction<T[]>>] {
+): UseList<T> {
   const [list, setList] = useState<Array<T>>(initialValue);
   const push = (item: T) => {
     setList((_list) => [..._list, item]);
   };
 
-  return [list, push, setList];
+  const clean = () => {
+    setList([])
+  };
+
+  return [list, push, setList, clean];
 }
 
 export function useIndexedList<T = any>(

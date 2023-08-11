@@ -1,6 +1,6 @@
 import { Box, Flex, Text } from "@chakra-ui/react";
 import { OnMarkerClick } from "./types";
-import { MarkerModel } from "../../model/markers.model";
+import { Marker } from "../../model/markers.model";
 
 export function Nut({
   height,
@@ -10,18 +10,18 @@ export function Nut({
 }: {
   height: string | number;
   tunning: string[];
-  activeMarkers?: Array<MarkerModel>;
+  activeMarkers?: Array<Marker>;
   onNoteClick: OnMarkerClick;
 }) {
   const isMarkerActive = (fret: number, string: number) => {
-    return !!activeMarkers.find((marker: MarkerModel) => {
+    return !!activeMarkers.find((marker: Marker) => {
       return marker.fret === fret && marker.string === string;
     });
   };
 
   const isStringAlreadyActiveWithMarker = (string: number) => {
     const markerOnSameString = activeMarkers.find(
-      (marker: MarkerModel) => marker.string === string
+      (marker: Marker) => marker.string === string
     );
     return !!markerOnSameString;
   };

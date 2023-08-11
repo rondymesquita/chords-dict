@@ -1,8 +1,9 @@
-import { Box, Center, Flex, Square, Text } from "@chakra-ui/react";
-import { OnMarkerClick } from "./types";
-import { MarkerModel } from "../../model/markers.model";
-import { Marker } from ".";
-import { Transposer } from "../../util/transposer";
+import { Box, Center, Flex, Square, Text } from '@chakra-ui/react';
+
+import { Transposer } from '../../app/transposer';
+import * as model from '../../model';
+import { Marker } from '.';
+import { OnMarkerClick } from './types';
 
 const transposer = new Transposer();
 
@@ -13,33 +14,33 @@ export function InteractiveBoard({
 }: {
   onMarkerClick: OnMarkerClick;
   tunning: Array<string>;
-  activeMarkers?: Array<MarkerModel>;
+  activeMarkers?: Array<model.Marker>;
 }) {
   const isMarkerVisible = (fret: number, string: number) => {
-    return !!activeMarkers.find((marker: MarkerModel) => {
+    return !!activeMarkers.find((marker: model.Marker) => {
       return marker.fret === fret && marker.string === string;
     });
   };
 
   return (
     <Box
-      height={"100%"}
-      width={"980px"}
-      position={"absolute"}
+      height={'100%'}
+      width={'980px'}
+      position={'absolute'}
       top={0}
-      flexDirection={"column"}
+      flexDirection={'column'}
     >
-      <Box position={"relative"} height={"100%"}>
-        <Flex flexDirection={"row"} height={"100%"}>
+      <Box position={'relative'} height={'100%'}>
+        <Flex flexDirection={'row'} height={'100%'}>
           {new Array(22).fill(0).map((_, fret) => {
             return (
               <Flex
                 key={fret}
-                flexDirection={"column"}
-                height={"100%"}
+                flexDirection={'column'}
+                height={'100%'}
                 // border={"1px"}
                 // borderColor={"red"}
-                width={"50px"}
+                width={'50px'}
               >
                 {tunning.map((note, string) => {
                   return (
@@ -48,7 +49,11 @@ export function InteractiveBoard({
                       note={transposer.transposeUp(note, fret + 1)}
                       isVisible={isMarkerVisible(fret + 1, string + 1)}
                       onClick={() =>
-                        onMarkerClick({ fret: fret + 1, string: string + 1 })
+                        onMarkerClick({
+                          fret: fret + 1,
+                          string: string + 1,
+                          note: transposer.transposeUp(note, fret + 1),
+                        })
                       }
                     />
                   );
