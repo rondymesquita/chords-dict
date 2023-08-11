@@ -1,6 +1,6 @@
 import { Center, Text } from '@chakra-ui/react';
 
-import { FretboardWidget } from '../widgets/FretboardWidget';
+import { BoardWidget } from '../widgets/BoardWidget';
 
 export default function MainPage() {
   return (
@@ -8,7 +8,7 @@ export default function MainPage() {
       <Center>
         <Text as={'h1'}>Dicionário de Acordes</Text>
       </Center>
-      <FretboardWidget />
+      <BoardWidget />
     </>
   );
 }

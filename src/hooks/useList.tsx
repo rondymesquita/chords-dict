@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-type UseList<T>  = [
-  T[],
-  (item: T) => void,
-  React.Dispatch<React.SetStateAction<T[]>>,
-  () => void,
-]
+type UseList<T>  = {
+  list: T[],
+  push: (item: T) => void,
+  setList: React.Dispatch<React.SetStateAction<T[]>>,
+  clean: () => void,
+}
 
 export function useList<T = any>(
   initialValue: Array<T>
@@ -19,7 +19,7 @@ export function useList<T = any>(
     setList([])
   };
 
-  return [list, push, setList, clean];
+  return { list, push, setList, clean };
 }
 
 export function useIndexedList<T = any>(

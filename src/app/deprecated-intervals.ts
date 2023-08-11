@@ -1,6 +1,6 @@
 import { Interval, IntervalRule } from '../model';
 import { Note } from '../model/note.model';
-import { Transposer } from './transposer';
+import { Transposer } from './rules/transposer';
 
 export const $ROOT = new IntervalRule({ name: 'ROOT', step: 0 })
 export const $2_MINOR = new IntervalRule({ name: '2_MINOR', step: 1 })

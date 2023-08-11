@@ -5,9 +5,11 @@ export class ChordMatcher {
   match(markers: Array<Marker>, chord: Chord): Match {
 
     /**
-     * Check if all notes on markers on the board match with all notes in the passed chord.
+     * Check if all notes on markers on the board match with all notes in the passed chord format.
      */
     let isMatch = true
+    console.log(chord.getIntervals());
+
     markers.forEach((marker: Marker) => {
       const found = chord.getIntervals().find((interval: Interval) => {
         return interval.note === marker.note

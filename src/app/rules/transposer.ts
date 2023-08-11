@@ -1,6 +1,6 @@
-import { CircularLinkedList } from '../data/circular-linked-list';
-import { Note } from '../model/note.model';
-import { chromaticScale } from './data/chromatic-scale';
+import { CircularLinkedList } from '../../data/circular-linked-list';
+import { Note } from '../../model/note.model';
+import { chromaticScale } from '../data/chromatic-scale';
 
 export class Transposer {
   private chromaticScale: CircularLinkedList<Note>;

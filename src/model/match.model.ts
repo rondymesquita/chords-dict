@@ -9,6 +9,5 @@ export class Match extends BaseModel{
     Object.assign(this, params)
 
     this.id = crypto.randomUUID()
-    // console.log(this);
   }
 }

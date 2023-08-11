@@ -1,4 +1,4 @@
-import { Transposer } from '../app/transposer';
+import { Transposer } from '../app/rules/transposer';
 import { Interval, IntervalRule } from '.';
 import { Note } from './note.model';
 

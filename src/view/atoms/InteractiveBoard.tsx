@@ -1,21 +1,25 @@
 import { Box, Center, Flex, Square, Text } from '@chakra-ui/react';
 
-import { Transposer } from '../../app/transposer';
+import { Transposer } from '../../app/rules/transposer';
 import * as model from '../../model';
 import { Marker } from '.';
 import { OnMarkerClick } from './types';
 
 const transposer = new Transposer();
 
+interface InteractiveBoardProps {
+  onMarkerClick: OnMarkerClick;
+  tunning: Array<string>;
+  activeMarkers?: Array<model.Marker>;
+  frets: number
+}
+
 export function InteractiveBoard({
   onMarkerClick,
   tunning,
   activeMarkers = [],
-}: {
-  onMarkerClick: OnMarkerClick;
-  tunning: Array<string>;
-  activeMarkers?: Array<model.Marker>;
-}) {
+  frets = 22
+}: InteractiveBoardProps) {
   const isMarkerVisible = (fret: number, string: number) => {
     return !!activeMarkers.find((marker: model.Marker) => {
       return marker.fret === fret && marker.string === string;
@@ -32,7 +36,7 @@ export function InteractiveBoard({
     >
       <Box position={'relative'} height={'100%'}>
         <Flex flexDirection={'row'} height={'100%'}>
-          {new Array(22).fill(0).map((_, fret) => {
+          {new Array(frets).fill(0).map((_, fret) => {
             return (
               <Flex
                 key={fret}
