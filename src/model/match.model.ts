@@ -1,4 +1,6 @@
-import { BaseModel, Chord } from '.'
+import {
+  BaseModel, Chord
+} from '.'
 
 export class Match extends BaseModel{
   chord: Chord
@@ -8,6 +10,6 @@ export class Match extends BaseModel{
     super()
     Object.assign(this, params)
 
-    this.id = crypto.randomUUID()
+    // this.id = `${this.fret}-${this.string}`
   }
 }

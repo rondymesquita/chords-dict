@@ -1,6 +1,9 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: {
+    browser: true,
+    es2020: true
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -11,16 +14,28 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'simple-import-sort'],
   rules: {
-    'quotes': ['error', 'single'],
+    quotes: ['error', 'single'],
+    'quote-props': ['error', 'as-needed'],
     'jsx-quotes': ['error', 'prefer-single'],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
     'react-refresh/only-export-components': [
       'warn',
-      { allowConstantExport: true },
+      {
+        allowConstantExport: true
+      },
     ],
-    'indent': ['error', 2],
+    indent: ['error', 2],
+    'new-cap': ['error'],
     'object-curly-spacing': ['error', 'always'],
+    'object-curly-newline': ['error', 'always'],
+    'object-property-newline': ['error'],
+    'array-bracket-newline': [
+      'error',{
+        multiline: true
+      }
+    ],
+    'new-parens': ['error', 'always'],
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
     'react/jsx-max-props-per-line': ['error'],

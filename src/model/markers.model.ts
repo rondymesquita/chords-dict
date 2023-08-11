@@ -1,11 +1,17 @@
-import { Note } from './note.model';
+import {
+  BaseModel 
+} from '.';
+import {
+  Note 
+} from './note.model';
 
-export class Marker {
-  public id: string | number;
+export class Marker extends BaseModel{
   public note: Note;
   public fret: number;
   public string: number;
   constructor(model: Marker) {
+    super()
     Object.assign(this, model);
+    this.id = `${this.fret}-${this.string}`
   }
 }

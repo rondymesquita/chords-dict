@@ -4,9 +4,7 @@ import { colors } from './colors';
 import { fontFamily, globalStyles } from './global.styles';
 
 const defaultTheme = extendTheme();
-
-
-        console.log(defaultTheme);
+// console.log(defaultTheme);
 
 export const theme = extendTheme({
   styles: {

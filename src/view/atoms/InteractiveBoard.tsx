@@ -1,5 +1,4 @@
 import { Box, Center, Flex, Square, Text } from '@chakra-ui/react';
-import { React } from 'react'
 
 import { Transposer } from '../../app/rules/transposer';
 import * as model from '../../model';

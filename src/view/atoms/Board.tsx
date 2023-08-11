@@ -1,4 +1,4 @@
-import { Box, Flex, React, Square } from '@chakra-ui/react';
+import { Box, Flex, Square } from '@chakra-ui/react';
 
 export interface BoardProps {
   frets: number
