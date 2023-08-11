@@ -25,6 +25,7 @@ module.exports = {
     'simple-import-sort/exports': 'error',
     'react/jsx-max-props-per-line': ['error'],
     'react/jsx-props-no-multi-spaces': 'error',
-    'react/jsx-first-prop-new-line': ['error', 'always']
+    'react/jsx-first-prop-new-line': ['error', 'always'],
+    'react/react-in-jsx-scope': ['off']
   },
 };

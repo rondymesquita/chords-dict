@@ -1,4 +1,5 @@
 import { Box, Center, Flex, Square, Text } from '@chakra-ui/react';
+import { React } from 'react'
 
 import { Transposer } from '../../app/rules/transposer';
 import * as model from '../../model';
@@ -9,7 +10,7 @@ const transposer = new Transposer();
 
 interface InteractiveBoardProps {
   onMarkerClick: OnMarkerClick;
-  tunning: Array<string>;
+  tunning: Array<model.Note>;
   activeMarkers?: Array<model.Marker>;
   frets: number
 }
@@ -34,8 +35,12 @@ export function InteractiveBoard({
       top={0}
       flexDirection={'column'}
     >
-      <Box position={'relative'} height={'100%'}>
-        <Flex flexDirection={'row'} height={'100%'}>
+      <Box
+        position={'relative'}
+        height={'100%'}>
+        <Flex
+          flexDirection={'row'}
+          height={'100%'}>
           {new Array(frets).fill(0).map((_, fret) => {
             return (
               <Flex
