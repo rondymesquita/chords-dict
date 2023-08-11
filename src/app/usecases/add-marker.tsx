@@ -1,7 +1,9 @@
 import { useIndexedList } from '../../hooks/useList';
 import { Marker } from '../../model';
 
-export const useAddMarkerUseCase = () => {
+interface UseAddMarkerInput {allowMultipleSameString: boolean}
+
+export const useAddMarkerUseCase = ({ allowMultipleSameString }: UseAddMarkerInput = { allowMultipleSameString: false }) => {
   const [markers, add, removeMarker, exists] = useIndexedList<Marker>();
 
   const addMarker = (marker: Marker) => {
@@ -9,7 +11,7 @@ export const useAddMarkerUseCase = () => {
       (m: Marker) => m.string === marker.string
     );
 
-    if (markerOnSameString) {
+    if (markerOnSameString && !allowMultipleSameString) {
       removeMarker(markerOnSameString);
     }
     if (exists(marker)) {

@@ -18,7 +18,7 @@ import { MarkerPosition } from '../atoms/types';
 import Debug from '../debug/Debug';
 
 export function BoardWidget() {
-  const { markers, addMarker } = useAddMarkerUseCase()
+  const { markers, addMarker } = useAddMarkerUseCase({ allowMultipleSameString: false })
   const { matches, cleanMatches, setMatches } = useAddMatchUseCase()
   const { searchChords } = useSearchChords()
 

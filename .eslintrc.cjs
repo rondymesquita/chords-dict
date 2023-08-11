@@ -3,6 +3,7 @@ module.exports = {
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
+    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
   ],
@@ -22,5 +23,8 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    'react/jsx-max-props-per-line': ['error'],
+    'react/jsx-props-no-multi-spaces': 'error',
+    'react/jsx-first-prop-new-line': ['error', 'always']
   },
 };
