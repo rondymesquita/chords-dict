@@ -80,6 +80,30 @@ describe('chord matcher', () => {
         note: 'G',
       }),
       new Marker({
+        note: 'C',
+      }),
+    ]
+    const matches = []
+
+    ChordsData.forEach((Chord: ConstructableChord) => {
+      const chord = new Chord('C')
+      const scale = new Scale('C')
+      const match = chordMatcher.match(markers, scale, chord)
+      match.isMatch && matches.push(match)
+    })
+    expect(matches.length).toEqual(1)
+  })
+
+  it.only('should match fifth chord', () => {
+    const chordMatcher = new ChordMatcher()
+    const markers = [
+      new Marker({
+        note: 'C'
+      }),
+      new Marker({
+        note: 'G',
+      }),
+      new Marker({
         note: 'C#',
       }),
     ]
