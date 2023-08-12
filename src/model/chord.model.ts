@@ -12,12 +12,8 @@ export abstract class Chord {
   public rootNote: Note
   public intervalRules: Array<IntervalRule> = [];
 
-  private intervals: Array<Interval> = [];
+  public intervals: Array<Interval> = [];
   private transposer: Transposer;
-
-  getIntervals(): Array<Interval>{
-    return this.intervals
-  }
 
   constructor(rootNote: Note) {
     this.rootNote = rootNote
@@ -38,6 +34,6 @@ export abstract class Chord {
     });
   }
 
-  abstract getRules(): Pick<Chord, 'name' | 'intervalRules'>
+  protected abstract getRules(): Pick<Chord, 'name' | 'intervalRules'>
 
 }

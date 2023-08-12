@@ -1,67 +1,67 @@
 import {
-  Box, Button, Flex 
+  Box, Button, Flex
 } from '@chakra-ui/react';
 import {
-  useEffect 
+  useEffect
 } from 'react';
 
 import {
-  ChordsData 
+  ChordsData
 } from '../../app/data/chords';
 import {
-  chromaticScale 
+  chromaticScale
 } from '../../app/data/chromatic-scale';
 import {
-  ChordMatcher 
+  ChordMatcher
 } from '../../app/rules/chord-matcher';
 import {
-  useAddMarkerUseCase 
+  useAddMarkerUseCase
 } from '../../app/usecases/add-marker';
 import {
-  useAddMatchUseCase 
+  useAddMatchUseCase
 } from '../../app/usecases/add-match';
 import {
-  useSearchChords 
+  useSearchChords
 } from '../../app/usecases/search-chords';
 import {
-  useIndexedList, useList 
+  useIndexedList, useList
 } from '../../hooks/useList';
 import * as model from '../../model'
 import {
-  Marker 
+  Marker
 } from '../../model/markers.model';
 import {
-  Match 
+  Match
 } from '../../model/match.model';
 import {
-  Note 
+  Note
 } from '../../model/note.model';
 import {
-  Board, InteractiveBoard 
+  Board, InteractiveBoard
 } from '../atoms';
 import {
-  Nut 
+  Nut
 } from '../atoms/Nut';
 import {
-  MarkerPosition 
+  MarkerPosition
 } from '../atoms/types';
 import Debug from '../debug/Debug';
 
 export function BoardWidget() {
   const {
-    markers, addMarker 
+    markers, addMarker
   } = useAddMarkerUseCase({
-    allowMultipleSameString: false 
+    allowMultipleSameString: false
   })
   const {
-    matches, cleanMatches, setMatches 
+    matches, cleanMatches, setMatches
   } = useAddMatchUseCase()
   const {
-    searchChords 
+    searchChords
   } = useSearchChords()
 
   const addMarkerNote = ({
-    fret, string, note 
+    fret, string, note
   }: MarkerPosition) => {
     const marker = new Marker({
       fret,
@@ -115,7 +115,7 @@ export function BoardWidget() {
 
               {matches.filter((match: Match) => match.isMatch).map((match: Match) => {
                 return (<p
-                  key={match.id}>{match.chord.rootNote} {match.chord.name} - {new String(match.isMatch)}</p>)
+                  key={match.id}>{match.chord.rootNote}{match.chord.name}</p>)
               })}
             </section>
           </Flex>
@@ -130,7 +130,7 @@ export function BoardWidget() {
           flexDirection={'row'}>
           <Debug
             {...{
-              markers 
+              markers
             }}/>
         </Flex>
       </Flex>

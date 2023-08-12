@@ -28,8 +28,8 @@ module.exports = {
     indent: ['error', 2],
     'new-cap': ['error'],
     'object-curly-spacing': ['error', 'always'],
-    'object-curly-newline': ['error', 'always'],
-    'object-property-newline': ['error'],
+    // 'object-curly-newline': ['error', 'always'],
+    // 'object-property-newline': ['error'],
     'array-bracket-newline': [
       'error',{
         multiline: true

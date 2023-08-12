@@ -1,6 +1,6 @@
-import { Interval, IntervalRule } from '../model';
-import { Note } from '../model/note.model';
-import { Transposer } from './rules/transposer';
+import { Interval, IntervalRule } from '../../model';
+import { Note } from '../../model/note.model';
+import { Transposer } from './transposer';
 
 export const $ROOT = new IntervalRule({ name: 'ROOT', step: 0 })
 export const $2_MINOR = new IntervalRule({ name: '2_MINOR', step: 1 })
@@ -17,10 +17,10 @@ export const $6_MAJOR = new IntervalRule({ name: '6_MAJOR', step: 9 })
 // export const $7_DIMINISHED =  new IntervalRule({ name: '7_DIMINISHED', step: 9 })
 export const $7_MINOR = new IntervalRule({ name: '7_MINOR', step: 10 })
 export const $7_MAJOR = new IntervalRule({ name: '7_MAJOR', step: 11 })
-export const $8_PERFECT = new IntervalRule({ name: '8_PERFECT', step: 12 })
+// export const $8_PERFECT = new IntervalRule({ name: '8_PERFECT', step: 12 })
 
 
-export class Intervals {
+export class Scale {
   private intervalRules: Array<IntervalRule> = [];
   private transposer: Transposer;
   public intervals: Array<Interval> = [];
@@ -39,8 +39,7 @@ export class Intervals {
       $5_AUGMENTED,
       $6_MAJOR,
       $7_MINOR,
-      $7_MAJOR,
-      $8_PERFECT,
+      $7_MAJOR
     ];
     this.intervals = this.intervalRules.map((intervalRule: IntervalRule) => {
       const transpostedNote = this.transposer.transposeUp(
