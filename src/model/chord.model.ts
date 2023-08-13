@@ -6,9 +6,20 @@ export interface ConstructableChord {
   new(rootNote: Note): any
 }
 
+export enum ChordName {
+  MAJOR = 'Major',
+  MINOR = 'Minor',
+  SUS2 = 'sus2',
+  SUS4 = 'sus4',
+  FIFTH = '5',
+  SIXTH = '6',
+  MINOR_SEVENTH = '7m',
+  MAJOR_SEVENTH = '7M',
+}
+
 export abstract class Chord {
 
-  public name: string
+  public name: ChordName
   public rootNote: Note
   public intervalRules: Array<IntervalRule> = [];
 

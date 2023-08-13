@@ -11,13 +11,9 @@ export const useSearchChords = () => {
     const matches: Array<Match> = []
     chromaticScale.forEach((note: Note) => {
       const scale = new Scale(note)
-
-      // if (note != 'C') return
       const chordMatcher = new ChordMatcher()
       ChordsData.forEach((Chord: ConstructableChord) => {
         const chord = new Chord(note)
-
-        // const match = chordMatcher.match(markers, chord)
         const match = chordMatcher.match(markers, scale, chord)
         matches.push(match)
       })

@@ -1,5 +1,5 @@
 import {
-  Chord as Chord,ConstructableChord
+  Chord as Chord,ChordName,ConstructableChord
 } from '../../model/chord.model';
 import {
   $2_MAJOR,
@@ -9,7 +9,7 @@ import {
 export class MajorChord extends Chord{
   getRules () {
     return {
-      name: 'Maior',
+      name: ChordName.MAJOR,
       intervalRules: [
         $ROOT,
         $3_MAJOR,
@@ -22,7 +22,7 @@ export class MajorChord extends Chord{
 export class MinorChord extends Chord{
   getRules () {
     return {
-      name: 'Menor',
+      name: ChordName.MINOR,
       intervalRules: [
         $ROOT,
         $3_MINOR,
@@ -34,7 +34,7 @@ export class MinorChord extends Chord{
 export class SuspendedSecond extends Chord{
   getRules () {
     return {
-      name: 'sus2',
+      name: ChordName.SUS2,
       intervalRules: [
         $ROOT,
         $2_MAJOR,
@@ -46,7 +46,7 @@ export class SuspendedSecond extends Chord{
 export class SuspendedForth extends Chord{
   getRules () {
     return {
-      name: 'sus4',
+      name: ChordName.SUS4,
       intervalRules: [
         $ROOT,
         $4_PERFECT,
@@ -58,7 +58,7 @@ export class SuspendedForth extends Chord{
 export class Fifth extends Chord{
   getRules () {
     return {
-      name: '5',
+      name: ChordName.FIFTH,
       intervalRules: [
         $ROOT,
         $5_PERFECT,
@@ -69,7 +69,7 @@ export class Fifth extends Chord{
 export class Sixth extends Chord{
   getRules () {
     return {
-      name: '6',
+      name: ChordName.SIXTH,
       intervalRules: [
         $ROOT,
         $3_MAJOR,
@@ -82,7 +82,7 @@ export class Sixth extends Chord{
 export class MinorSeventhChord extends Chord{
   getRules () {
     return {
-      name: '7m',
+      name: ChordName.MINOR_SEVENTH,
       intervalRules: [
         $ROOT,
         $3_MINOR,
@@ -95,7 +95,7 @@ export class MinorSeventhChord extends Chord{
 export class MajorSeventhChord extends Chord{
   getRules () {
     return {
-      name: '7M',
+      name: ChordName.MAJOR_SEVENTH,
       intervalRules: [
         $ROOT,
         $3_MAJOR,
@@ -110,11 +110,11 @@ export class MajorSeventhChord extends Chord{
 
 export const ChordsData: Array<ConstructableChord> = [
   MajorChord,
-  MinorChord,
-  SuspendedSecond,
-  SuspendedForth,
-  Fifth,
-  Sixth,
-  MinorSeventhChord,
-  MajorSeventhChord
+  // MinorChord,
+  // SuspendedSecond,
+  // SuspendedForth,
+  // Fifth,
+  // Sixth,
+  // MinorSeventhChord,
+  // MajorSeventhChord
 ]

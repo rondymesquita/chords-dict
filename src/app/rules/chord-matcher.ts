@@ -17,19 +17,15 @@ export class ChordMatcher {
       }
     })
 
-    // console.log(mappedIntervals);
+    let isMatch = false
 
-    const isMatch = chord.intervals.every((interval: Interval) => {
+    const chordIntervalNames = chord.intervals.map((interval: Interval) => interval.name).sort().join()
 
-      const foundInterval = mappedIntervals.find((mappedInterval: Interval) => {
-        return mappedInterval.name === interval.name
-      })
+    const mappedIntervalNames = mappedIntervals.map((interval: Interval) => interval.name).sort().join()
 
-      return interval.name === foundInterval?.name
-      // return !!foundInterval
-    })
-    console.log(isMatch, chord.name);
-
+    if (chordIntervalNames === mappedIntervalNames ) {
+      isMatch = true
+    }
 
     // /**
     //  * Check if matched intervals match with the chord interval note and interval name

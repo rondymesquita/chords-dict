@@ -70,7 +70,7 @@ describe('chord matcher', () => {
     const chord = new MinorChord('A')
     expect(chordMatcher.match(markers, chord).isMatch).toEqual(true)
   })
-  it.only('should match fifth chord', () => {
+  it('should match fifth chord', () => {
     const chordMatcher = new ChordMatcher()
     const markers = [
       new Marker({
@@ -88,6 +88,30 @@ describe('chord matcher', () => {
     ChordsData.forEach((Chord: ConstructableChord) => {
       const chord = new Chord('C')
       const scale = new Scale('C')
+      const match = chordMatcher.match(markers, scale, chord)
+      match.isMatch && matches.push(match)
+    })
+    expect(matches.length).toEqual(1)
+  })
+
+  it('should match fifth chord', () => {
+    const chordMatcher = new ChordMatcher()
+    const markers = [
+      new Marker({
+        note: 'F#'
+      }),
+      new Marker({
+        note: 'D',
+      }),
+      new Marker({
+        note: 'A',
+      }),
+    ]
+    const matches = []
+
+    ChordsData.forEach((Chord: ConstructableChord) => {
+      // const chord = new Chord('C')
+      // const scale = new Scale('C')
       const match = chordMatcher.match(markers, scale, chord)
       match.isMatch && matches.push(match)
     })
