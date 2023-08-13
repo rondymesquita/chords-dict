@@ -8,7 +8,7 @@ export class ChordMatcher {
 
 
     const mappedIntervals: Interval[] = []
-    markers.map((marker: Marker) => {
+    markers.forEach((marker: Marker) => {
       const foundInterval = scale.intervals.find((interval: Interval) => {
         return marker.note === interval.note
       })
@@ -17,36 +17,42 @@ export class ChordMatcher {
       }
     })
 
-    let isMatch = false
+    // let isMatch = false
 
-    const chordIntervalNames = chord.intervals.map((interval: Interval) => interval.name).sort().join()
+    console.log({ chordInterval: chord.intervals });
+    console.log({ mappedIntervals });
 
-    const mappedIntervalNames = mappedIntervals.map((interval: Interval) => interval.name).sort().join()
+    /**
+     * number of matched intervals for the given chord
+     */
+    let isMatch = true
+    const matchedIntervals = new Set()
+    for(let i =0; i < mappedIntervals.length; i++){
+      const interval = mappedIntervals[i]
 
-    if (chordIntervalNames === mappedIntervalNames ) {
-      isMatch = true
+      const chordInterval = chord.intervals.find((i) => i.name === interval.name && i.note === interval.note)
+      if (chordInterval) {
+        matchedIntervals.add(chordInterval)
+      } else {
+        isMatch = false
+        break
+      }
     }
 
-    // /**
-    //  * Check if matched intervals match with the chord interval note and interval name
-    //  */
+    console.log({ chordIntervalCount: chord.intervals.length });
+    console.log({ matchedIntervalCount: mappedIntervals.length });
+    console.log({ matchedIntervals });
 
-    // const matchedIntervals: Interval[] = []
-    // mappedIntervals.forEach((mappedInterval: Interval)=>{
-    //   const foundInterval = chord.intervals.find((interval: Interval) => {
-    //     return mappedInterval.name === interval.name
-    //   })
-    //   if (foundInterval) {
-    //     matchedIntervals.push(foundInterval)
-    //   }
-    // })
+    if (isMatch && matchedIntervals.size === chord.intervals.length) {
+      isMatch = true
+    } else {
+      isMatch = false
+    }
+    console.log({ isMatch });
+    // if (matchedIntervals.size >= chord.intervals.length) {
+    // isMatch = match
+    // }
 
-    // console.log({ matchedIntervals }, chord.intervals);
-    // console.log('============================');
-
-    // const finalMatches: Interval[] = []
-
-    // const isMatch = matchedIntervals.length === mappedIntervals.length
     return new Match({ isMatch, chord })
 
   }
