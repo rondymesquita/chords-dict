@@ -15,6 +15,7 @@ export enum ChordName {
   SIXTH = '6',
   MINOR_SEVENTH = '7m',
   MAJOR_SEVENTH = '7M',
+  NINTH = '9',
 }
 
 export abstract class Chord {

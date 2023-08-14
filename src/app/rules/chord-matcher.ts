@@ -17,10 +17,8 @@ export class ChordMatcher {
       }
     })
 
-    // let isMatch = false
-
-    console.log({ chordInterval: chord.intervals });
-    console.log({ mappedIntervals });
+    // console.log({ chordInterval: chord.intervals });
+    // console.log({ mappedIntervals });
 
     /**
      * number of matched intervals for the given chord
@@ -39,19 +37,17 @@ export class ChordMatcher {
       }
     }
 
-    console.log({ chordIntervalCount: chord.intervals.length });
-    console.log({ matchedIntervalCount: mappedIntervals.length });
-    console.log({ matchedIntervals });
+
 
     if (isMatch && matchedIntervals.size === chord.intervals.length) {
       isMatch = true
     } else {
       isMatch = false
     }
-    console.log({ isMatch });
-    // if (matchedIntervals.size >= chord.intervals.length) {
-    // isMatch = match
-    // }
+    // console.log({ chordIntervalCount: chord.intervals.length });
+    // console.log({ matchedIntervalCount: mappedIntervals.length });
+    // console.log({ matchedIntervals });
+    // console.log({ isMatch });
 
     return new Match({ isMatch, chord })
 

@@ -9,16 +9,16 @@ import { Scale } from '../rules/scale';
 export const useSearchChords = () => {
   const searchChords = (markers: Array<Marker>): Array<Match> => {
     const matches: Array<Match> = []
-    const note = 'D'
-    // chromaticScale.forEach((note: Note) => {
-    const scale = new Scale(note)
-    const chordMatcher = new ChordMatcher()
-    ChordsData.forEach((Chord: ConstructableChord) => {
-      const chord = new Chord(note)
-      const match = chordMatcher.match(markers, scale, chord)
-      matches.push(match)
+    // const note = 'D'
+    chromaticScale.forEach((note: Note) => {
+      const scale = new Scale(note)
+      const chordMatcher = new ChordMatcher()
+      ChordsData.forEach((Chord: ConstructableChord) => {
+        const chord = new Chord(note)
+        const match = chordMatcher.match(markers, scale, chord)
+        matches.push(match)
+      })
     })
-    // })
     return matches
   }
 

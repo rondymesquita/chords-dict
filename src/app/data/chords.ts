@@ -1,9 +1,7 @@
-import {
-  Chord as Chord,ChordName,ConstructableChord
-} from '../../model/chord.model';
+import { Chord as Chord,ChordName,ConstructableChord } from '../../model/chord.model';
 import {
   $2_MAJOR,
-  $3_MAJOR, $3_MINOR, $4_PERFECT, $5_PERFECT, $6_MAJOR, $7_MAJOR, $7_MINOR, $ROOT
+  $3_MAJOR, $3_MINOR, $4_PERFECT, $5_PERFECT, $6_MAJOR, $7_MAJOR, $7_MINOR, $9_MAJOR, $ROOT
 } from '../rules/scale';
 
 export class MajorChord extends Chord{
@@ -105,16 +103,30 @@ export class MajorSeventhChord extends Chord{
     }
   }
 }
+export class NinthChord extends Chord{
+  getRules () {
+    return {
+      name: ChordName.NINTH,
+      intervalRules: [
+        $ROOT,
+        $3_MAJOR,
+        $5_PERFECT,
+        $9_MAJOR
+      ]
+    }
+  }
+}
 
 
 
 export const ChordsData: Array<ConstructableChord> = [
   MajorChord,
-  // MinorChord,
-  // SuspendedSecond,
-  // SuspendedForth,
-  // Fifth,
-  // Sixth,
-  // MinorSeventhChord,
-  // MajorSeventhChord
+  MinorChord,
+  SuspendedSecond,
+  SuspendedForth,
+  Fifth,
+  Sixth,
+  MinorSeventhChord,
+  MajorSeventhChord,
+  NinthChord
 ]

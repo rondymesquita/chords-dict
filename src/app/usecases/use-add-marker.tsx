@@ -7,12 +7,12 @@ export const useAddMarkerUseCase = ({ allowMultipleSameString }: UseAddMarkerInp
   const [markers, add, removeMarker, exists] = useIndexedList<Marker>();
 
   const addMarker = (marker: Marker) => {
-    const markerOnSameString = markers.find(
+    const existingMarkerOnSameString = markers.find(
       (m: Marker) => m.string === marker.string
     );
 
-    if (markerOnSameString && !allowMultipleSameString) {
-      removeMarker(markerOnSameString);
+    if (existingMarkerOnSameString && !allowMultipleSameString) {
+      removeMarker(existingMarkerOnSameString);
     }
     if (exists(marker)) {
       removeMarker(marker);
