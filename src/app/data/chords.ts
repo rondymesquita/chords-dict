@@ -103,6 +103,19 @@ export class MajorSeventhChord extends Chord{
     }
   }
 }
+export class DominantSeventhChord extends Chord{
+  getRules () {
+    return {
+      name: ChordName.DOMINANT_SEVENTH,
+      intervalRules: [
+        $ROOT,
+        $3_MAJOR,
+        $5_PERFECT,
+        $7_MINOR
+      ]
+    }
+  }
+}
 export class NinthChord extends Chord{
   getRules () {
     return {
@@ -126,6 +139,7 @@ export const ChordsData: Array<ConstructableChord> = [
   SuspendedForth,
   Fifth,
   Sixth,
+  DominantSeventhChord,
   MinorSeventhChord,
   MajorSeventhChord,
   NinthChord

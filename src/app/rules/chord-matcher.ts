@@ -1,10 +1,12 @@
-import { Chord,Interval, IntervalRule, Marker, Note } from '../../model'
+import {
+  Chord,Interval, IntervalRule, Marker, Note 
+} from '../../model'
 import { Match } from '../../model/match.model'
 import { ScaleData } from '../data/scale';
 import { Scale } from './scale';
 
 export class ChordMatcher {
-  match(markers: Array<Marker>, scale: Scale, chord: Chord): Match{
+  match(markers: Array<Marker>, scale: Scale, chord: Chord): boolean{
 
 
     const mappedIntervals: Interval[] = []
@@ -49,7 +51,7 @@ export class ChordMatcher {
     // console.log({ matchedIntervals });
     // console.log({ isMatch });
 
-    return new Match({ isMatch, chord })
+    return isMatch
 
   }
 }

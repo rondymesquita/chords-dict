@@ -1,5 +1,5 @@
 import { Transposer } from '../app/rules/transposer';
-import { Interval, IntervalRule } from '.';
+import { BaseModel, Interval, IntervalRule } from '.';
 import { Note } from './note.model';
 
 export interface ConstructableChord {
@@ -14,11 +14,12 @@ export enum ChordName {
   FIFTH = '5',
   SIXTH = '6',
   MINOR_SEVENTH = '7m',
+  DOMINANT_SEVENTH = '7',
   MAJOR_SEVENTH = '7M',
   NINTH = '9',
 }
 
-export abstract class Chord {
+export abstract class Chord extends BaseModel{
 
   public name: ChordName
   public rootNote: Note
@@ -28,10 +29,13 @@ export abstract class Chord {
   private transposer: Transposer;
 
   constructor(rootNote: Note) {
-    this.rootNote = rootNote
-    this.transposer = new Transposer();
+    super()
     const { name, intervalRules } = this.getRules()
     Object.assign(this, { name, intervalRules })
+
+    this.id = `${this.name}-${this.rootNote}`
+    this.rootNote = rootNote
+    this.transposer = new Transposer();
 
     this.intervals = this.intervalRules.map((intervalRule: IntervalRule) => {
       const transpostedNote = this.transposer.transposeUp(

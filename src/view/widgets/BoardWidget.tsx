@@ -73,9 +73,9 @@ export function BoardWidget() {
             <h2>Acordes</h2>
             <section>
 
-              {matches.filter((match: Match) => match.isMatch).map((match: Match) => {
+              {matches.map((chord: model.Chord) => {
                 return (<p
-                  key={match.id}>{match.chord.rootNote}{match.chord.name}</p>)
+                  key={chord.id}>{chord.rootNote}{chord.name}</p>)
               })}
             </section>
           </Flex>
