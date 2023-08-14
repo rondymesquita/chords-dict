@@ -6,10 +6,21 @@ import { fontFamily, globalStyles } from './global.styles';
 const defaultTheme = extendTheme();
 // console.log(defaultTheme);
 
-export const theme = extendTheme({
-  styles: {
-    global: globalStyles,
+import { ComponentStyleConfig } from '@chakra-ui/react'
+
+const Flex: ComponentStyleConfig = {
+  baseStyle:
+  {
+    border: '1px solid red !important',
+    bg: 'red !important',
+    fontSize: '25px !important'
   },
+  defaultProps: { border: '1px solid red' },
+
+}
+
+export const theme = extendTheme({
+  styles: { global: globalStyles, },
   colors: {
     primary: colors.purple,
     secondary: colors.amber,
@@ -20,17 +31,15 @@ export const theme = extendTheme({
     ...colors,
   },
   components: {
-    Heading: {
-      baseStyle: {
-        fontFamily,
-      },
-    },
+    Heading: { baseStyle: { fontFamily, }, },
+    Flex,
     Button: {
-      defaultProps: {
-        size: 'sm',
-      },
+      baseStyle: { borderRadius: 'lg' },
+      defaultProps: { size: 'sm', },
       sizes: {
-        sm: { h: '8', minW: '8', fontSize: 'xs', px: '8' },
+        sm: {
+          h: '8', minW: '8', fontSize: 'xs', px: '8'
+        },
       },
       variants: {
         primary: (props: any) => ({
@@ -47,9 +56,6 @@ export const theme = extendTheme({
             transform: 'scale(1.03)',
           },
         }),
-      },
-      baseStyle: {
-        borderRadius: 'md',
       },
     },
   },

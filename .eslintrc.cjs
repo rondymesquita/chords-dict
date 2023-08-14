@@ -37,6 +37,7 @@ module.exports = {
     'react/jsx-max-props-per-line': ['error'],
     'react/jsx-props-no-multi-spaces': 'error',
     'react/jsx-first-prop-new-line': ['error', 'always'],
-    'react/react-in-jsx-scope': ['off']
+    'react/react-in-jsx-scope': ['off'],
+    'react/jsx-closing-bracket-location': ['error', 'line-aligned']
   },
 };

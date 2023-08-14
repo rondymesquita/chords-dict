@@ -1,4 +1,6 @@
-import { Box, Center, Flex, Square, Text } from '@chakra-ui/react';
+import {
+  Box, Center, Flex, Square, Text
+} from '@chakra-ui/react';
 
 import { Transposer } from '../../app/rules/transposer';
 import * as model from '../../model';
@@ -28,18 +30,21 @@ export function InteractiveBoard({
 
   return (
     <Box
+      // border={'1px solid blue'}
       height={'100%'}
-      width={'980px'}
+      width={'fit-content'}
       position={'absolute'}
       top={0}
       flexDirection={'column'}
     >
       <Box
         position={'relative'}
-        height={'100%'}>
+        height={'100%'}
+      >
         <Flex
           flexDirection={'row'}
-          height={'100%'}>
+          height={'100%'}
+        >
           {new Array(frets).fill(0).map((_, fret) => {
             return (
               <Flex

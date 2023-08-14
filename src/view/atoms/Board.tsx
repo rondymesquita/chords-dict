@@ -13,20 +13,19 @@ export default function Dot() {
       borderRadius={'2xl'}
       border={'1px solid var(--chakra-colors-primary-300)'}
       dropShadow={'2xl'}
-      sx={{
-        boxShadow: 'inset 0px 1px 2px -1px var(--chakra-colors-primary-700)'
-      }}></Square>
+      sx={{ boxShadow: 'inset 0px 1px 2px -1px var(--chakra-colors-primary-700)' }}></Square>
   )
 }
 
 
 export function Board({ frets=22 }: BoardProps) {
-  const dotsPosition: number[] = [3,5,7,9,12,15].map(n => n-1)
+  const dotsPosition: number[] = [
+    3,5,7,9,12,15
+  ].map(n => n-1)
   return (
     <Box
       height={'100%'}
       width={'fit-content'}
-      border={'0px'}
       bgColor={'secondary.200'}
     >
       <Flex
@@ -79,9 +78,7 @@ export function Board({ frets=22 }: BoardProps) {
                   borderBottom: 'none',
                   flex: 1.2,
                 }}
-                _first={{
-                  flex: 1.2,
-                }}
+                _first={{ flex: 1.2, }}
               ></Box>
             );
           })}
