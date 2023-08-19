@@ -1,22 +1,20 @@
-import {
-  Center, Container, Flex, Text
-} from '@chakra-ui/react';
+import { Center, Flex, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react'
-import { useCallback } from 'react'
 
-import { useAddChordUseCase } from '../../app/usecases/add-chord';
-import { useAddMarkerUseCase } from '../../app/usecases/add-marker';
-import { useSearchChords } from '../../app/usecases/use-search-chords';
-import { Chord, Marker, Note } from '../../model';
+import { addChordUseCase } from '../../app/usecases/add-chord';
+import { addMarkerUseCase } from '../../app/usecases/add-marker';
+import { searchChordsUseCase } from '../../app/usecases/search-chords';
+import { Note } from '../../model';
+import ChordsWidget from '../widgets/ChordsWidget';
 import { FretboardWidget } from '../widgets/FretboardWidget';
 
 
 
 export default function MainPage() {
 
-  const { markers, addMarker } = useAddMarkerUseCase({ allowMultipleSameString: false })
-  const { chords, cleanChords, setChords } = useAddChordUseCase()
-  const { searchChords } = useSearchChords()
+  const { markers, addMarker } = addMarkerUseCase({ allowMultipleSameString: false })
+  const { chords, cleanChords, setChords } = addChordUseCase()
+  const { searchChords } = searchChordsUseCase()
 
   const tunning: Note[] = 'EBGDAE'.split('').map((n) => n as Note);
 
@@ -57,14 +55,14 @@ export default function MainPage() {
         direction={'column'}
       >
         <h2>Acordes</h2>
-        <section>
+        <Flex>
+          <ChordsWidget
+            chords={chords}
+          />
 
-          {chords.map((chord: Chord) => {
-            return (<p
-              key={chord.id}
-            >{chord.rootNote}{chord.name}</p>)
-          })}
-        </section>
+
+
+        </Flex>
       </Flex>
 
     </Flex>

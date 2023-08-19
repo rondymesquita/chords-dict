@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { ChordName, Marker } from '../../model';
-import { useSearchChords } from './use-search-chords';
+import { searchChordsUseCase } from './search-chords';
 
 describe('search chord', ()=>{
   it('should match D Major', () => {
-    const { searchChords } = useSearchChords()
+    const { searchChords } = searchChordsUseCase()
     const markers = [
       new Marker({ note: 'F#' }),
       new Marker({ note: 'D', }),
@@ -19,7 +19,7 @@ describe('search chord', ()=>{
   })
 
   it('should not match D Major if there is a note outside of major intervals', () => {
-    const { searchChords } = useSearchChords()
+    const { searchChords } = searchChordsUseCase()
     const markers = [
       new Marker({ note: 'F#' }),
       new Marker({ note: 'D', }),
@@ -33,7 +33,7 @@ describe('search chord', ()=>{
     // expect(matches[0].rootNote).toEqual('D')
   })
   it.only('should not match D Major if there is a note outside of major intervals', () => {
-    const { searchChords } = useSearchChords()
+    const { searchChords } = searchChordsUseCase()
     const markers = [
       new Marker({ note: 'F#' }),
       new Marker({ note: 'D', }),

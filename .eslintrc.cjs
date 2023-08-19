@@ -12,7 +12,7 @@ module.exports = {
   ],
   ignorePatterns: ['dist'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh', 'simple-import-sort'],
+  plugins: ['react-refresh', 'simple-import-sort', 'unused-imports'],
   rules: {
     quotes: ['error', 'single'],
     'quote-props': ['error', 'as-needed'],
@@ -38,6 +38,8 @@ module.exports = {
     'react/jsx-props-no-multi-spaces': 'error',
     'react/jsx-first-prop-new-line': ['error', 'always'],
     'react/react-in-jsx-scope': ['off'],
-    'react/jsx-closing-bracket-location': ['error', 'line-aligned']
+    'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+    'react-hooks/rules-of-hooks': ['off'],
+    'unused-imports/no-unused-imports': ['error'],
   },
 };

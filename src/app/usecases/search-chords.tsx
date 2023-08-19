@@ -1,14 +1,12 @@
-import { useIndexedList, useList } from '../../hooks/useList';
 import {
-  Chord, ConstructableChord, Marker, Note 
+  Chord, ConstructableChord, Marker, Note
 } from '../../model';
-import { Match } from '../../model/match.model';
 import { ChordsData } from '../data/chords';
 import { chromaticScale } from '../data/chromatic-scale';
 import { ChordMatcher } from '../rules/chord-matcher';
 import { Scale } from '../rules/scale';
 
-export const useSearchChords = () => {
+export const searchChordsUseCase = () => {
   const searchChords = (markers: Array<Marker>): Array<Chord> => {
     const matchedChords: Array<Chord> = []
     // const note = 'D'
