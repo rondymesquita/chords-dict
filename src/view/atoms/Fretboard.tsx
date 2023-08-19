@@ -1,6 +1,6 @@
 import { Box, Flex, Square } from '@chakra-ui/react';
 
-export interface BoardProps {
+interface FretboardProps {
   frets: number
 }
 
@@ -13,12 +13,13 @@ export default function Dot() {
       borderRadius={'2xl'}
       border={'1px solid var(--chakra-colors-primary-300)'}
       dropShadow={'2xl'}
-      sx={{ boxShadow: 'inset 0px 1px 2px -1px var(--chakra-colors-primary-700)' }}></Square>
+      sx={{ boxShadow: 'inset 0px 1px 2px -1px var(--chakra-colors-primary-700)' }}
+    ></Square>
   )
 }
 
 
-export function Board({ frets=22 }: BoardProps) {
+export function Fretboard({ frets=22 }: FretboardProps) {
   const dotsPosition: number[] = [
     3,5,7,9,12,15
   ].map(n => n-1)
@@ -37,7 +38,8 @@ export function Board({ frets=22 }: BoardProps) {
         {/* frets */}
         <Flex
           width='100%'
-          py={'2px'}>
+          py={'2px'}
+        >
           {new Array(frets).fill(0).map((_, index) => {
             return (
               <Flex

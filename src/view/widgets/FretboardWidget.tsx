@@ -4,23 +4,26 @@ import { useEffect } from 'react';
 import { ChordsData } from '../../app/data/chords';
 import { chromaticScale } from '../../app/data/chromatic-scale';
 import { ChordMatcher } from '../../app/rules/chord-matcher';
+import { useAddChordUseCase } from '../../app/usecases/add-chord';
 import { useAddMarkerUseCase } from '../../app/usecases/add-marker';
-import { useAddMatchUseCase } from '../../app/usecases/use-add-match';
 import { useSearchChords } from '../../app/usecases/use-search-chords';
 import { useIndexedList, useList } from '../../hooks/useList';
 import * as model from '../../model'
 import { Marker } from '../../model/markers.model';
 import { Match } from '../../model/match.model';
 import { Note } from '../../model/note.model';
-import { Board,InteractiveBoard } from '../atoms';
+import { Fretboard, InteractiveFretboard } from '../atoms';
 import { Nut } from '../atoms/Nut';
 import { MarkerPosition } from '../atoms/types';
 import Debug from '../debug/Debug';
 
-export function BoardWidget() {
-  const { markers, addMarker } = useAddMarkerUseCase({ allowMultipleSameString: false })
-  const { matches, cleanMatches, setMatches } = useAddMatchUseCase()
-  const { searchChords } = useSearchChords()
+interface FretboardWidgetProps {
+  onAddMarker?: (marker: model.Marker) => void
+  markers: model.Marker[]
+  tunning: Note[]
+}
+
+export function FretboardWidget({ onAddMarker, markers, tunning }: FretboardWidgetProps) {
 
   const addMarkerNote = ({ fret, string, note }: MarkerPosition) => {
     const marker = new Marker({
@@ -28,19 +31,8 @@ export function BoardWidget() {
       string,
       note,
     });
-    addMarker(marker)
-    searchChord()
+    onAddMarker && onAddMarker(marker)
   };
-
-  const searchChord = () => {
-    cleanMatches()
-    const m = searchChords(markers)
-    setMatches(m)
-  };
-
-  useEffect(() => searchChord(), [markers])
-
-  const tunning: Note[] = 'EBGDAE'.split('').map((n) => n as Note);
 
   return (
     <Flex
@@ -63,28 +55,16 @@ export function BoardWidget() {
           position={'relative'}
           borderLeft={'4px'}
         >
-          <Board
+          <Fretboard
             frets={10}
           />
-          <InteractiveBoard
+          <InteractiveFretboard
             frets={10}
             tunning={tunning}
             activeMarkers={markers}
             onMarkerClick={addMarkerNote}
           />
-          {/* <Flex
-            direction={'column'}
-          >
-            <h2>Acordes</h2>
-            <section>
 
-              {matches.map((chord: model.Chord) => {
-                return (<p
-                  key={chord.id}
-                >{chord.rootNote}{chord.name}</p>)
-              })}
-            </section>
-          </Flex> */}
         </Box>
         {/* <Flex
           m={4}

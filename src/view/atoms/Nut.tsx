@@ -1,4 +1,6 @@
-import { Box, Center, Flex, Square, Text } from '@chakra-ui/react';
+import {
+  Box, Center, Flex, Square, Text
+} from '@chakra-ui/react';
 
 import { Note } from '../../model';
 import { Marker } from '../../model/markers.model';
@@ -33,7 +35,8 @@ export function Nut({
     <Flex
       flexDirection={'column'}
       height={height}
-      p={1}>
+      p={1}
+    >
       {tunning.map((note: Note, string: number) => {
         return (
           <Box
@@ -65,7 +68,8 @@ export function Nut({
                     bgColor: 'primary.500',
                     color: 'fg.0',
                   }
-                }>
+                }
+              >
                 <Text
                   position={'absolute'}
                   fontSize={'md'}
@@ -82,7 +86,8 @@ export function Nut({
                 </Text>
                 <Text
                   fontSize={'xx-small'}
-                  fontWeight={'bold'}>
+                  fontWeight={'bold'}
+                >
                   {note}
                 </Text>
               </Square>

@@ -9,19 +9,19 @@ import { OnMarkerClick } from './types';
 
 const transposer = new Transposer();
 
-interface InteractiveBoardProps {
+interface InteractiveFretboardProps {
   onMarkerClick: OnMarkerClick;
   tunning: Array<model.Note>;
   activeMarkers?: Array<model.Marker>;
   frets: number
 }
 
-export function InteractiveBoard({
+export function InteractiveFretboard({
   onMarkerClick,
   tunning,
   activeMarkers = [],
   frets = 22
-}: InteractiveBoardProps) {
+}: InteractiveFretboardProps) {
   const isMarkerVisible = (fret: number, string: number) => {
     return !!activeMarkers.find((marker: model.Marker) => {
       return marker.fret === fret && marker.string === string;
@@ -30,7 +30,6 @@ export function InteractiveBoard({
 
   return (
     <Box
-      // border={'1px solid blue'}
       height={'100%'}
       width={'fit-content'}
       position={'absolute'}
@@ -51,8 +50,6 @@ export function InteractiveBoard({
                 key={fret}
                 flexDirection={'column'}
                 height={'100%'}
-                // border={"1px"}
-                // borderColor={"red"}
                 width={'50px'}
               >
                 {tunning.map((note, string) => {

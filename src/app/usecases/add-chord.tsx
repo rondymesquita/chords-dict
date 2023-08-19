@@ -2,11 +2,11 @@ import { useIndexedList, useList } from '../../hooks/useList';
 import { Chord, Marker } from '../../model';
 import { Match } from '../../model/match.model';
 
-export const useAddMatchUseCase = () => {
+export const useAddChordUseCase = () => {
   const {
-    list: matches, push: addMatch, clean: cleanMatches, setList: setMatches
+    list: chords, push: addChord, clean: cleanChords, setList: setChords
   } = useList<Chord>([])
   return {
-    matches, addMatch, cleanMatches, setMatches
+    chords, addChord, cleanChords, setChords
   }
 }
