@@ -1,18 +1,24 @@
-import React from 'react'
 
-import { Chord } from '../../model'
+import { Flex } from '@chakra-ui/react'
+
+import * as model from '../../model'
+import Chord from '../atoms/Chord'
 
 interface ChordsWidgetProps {
-  chords: Chord[]
+  chords: model.Chord[]
 }
 
 export default function ChordsWidget({ chords }: ChordsWidgetProps) {
+
+  // const chords = [new MajorChord('D')]
   return (
-    <div>
-      {chords.map((chord: Chord) => {
-        return (<p
+    <>{chords.map((chord: model.Chord) => {
+      return (
+        <Flex
           key={chord.id}
-        >{chord.rootNote}{chord.name}</p>)
-      })}</div>
+        ><Chord
+            chord={chord}
+        /></Flex>)
+    })}</>
   )
 }

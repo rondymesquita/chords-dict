@@ -1,21 +1,11 @@
-import { Box, Button, Flex } from '@chakra-ui/react';
-import { useEffect } from 'react';
+import { Box, Flex } from '@chakra-ui/react';
 
-import { ChordsData } from '../../app/data/chords';
-import { chromaticScale } from '../../app/data/chromatic-scale';
-import { ChordMatcher } from '../../app/rules/chord-matcher';
-import { addChordUseCase } from '../../app/usecases/add-chord';
-import { addMarkerUseCase } from '../../app/usecases/add-marker';
-import { searchChordsUseCase } from '../../app/usecases/search-chords';
-import { useIndexedList, useList } from '../../hooks/useList';
 import * as model from '../../model'
 import { Marker } from '../../model/markers.model';
-import { Match } from '../../model/match.model';
 import { Note } from '../../model/note.model';
 import { Fretboard, InteractiveFretboard } from '../atoms';
 import { Nut } from '../atoms/Nut';
 import { MarkerPosition } from '../atoms/types';
-import Debug from '../debug/Debug';
 
 interface FretboardWidgetProps {
   onAddMarker?: (marker: model.Marker) => void

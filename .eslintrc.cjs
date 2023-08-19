@@ -18,10 +18,10 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
     'jsx-quotes': ['error', 'prefer-single'],
     // indent: ['error', 2],
-    indent: ['off'],
+    // indent: ['off'],
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-unused-vars': 'warn',
-    '@typescript-eslint/indent': ['error', 2],
+    // '@typescript-eslint/indent': ['error', 2],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },

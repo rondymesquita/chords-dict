@@ -60,8 +60,6 @@ export default function MainPage() {
             chords={chords}
           />
 
-
-
         </Flex>
       </Flex>
 
