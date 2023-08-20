@@ -46,10 +46,11 @@ export function FretboardWidget({ onAddMarker, markers, tunning }: FretboardWidg
           borderLeft={'4px'}
         >
           <Fretboard
-            frets={10}
+            frets={22}
+            showFretNumbers={true}
           />
           <InteractiveFretboard
-            frets={10}
+            frets={22}
             tunning={tunning}
             activeMarkers={markers}
             onMarkerClick={addMarkerNote}

@@ -9,7 +9,6 @@ import ChordsWidget from '../widgets/ChordsWidget';
 import { FretboardWidget } from '../widgets/FretboardWidget';
 
 
-
 export default function MainPage() {
 
   const { markers, addMarker } = addMarkerUseCase({ allowMultipleSameString: false })
@@ -42,9 +41,12 @@ export default function MainPage() {
 
       <Flex
         height={'150px'}
+        p={2}
+        pb={3}
         overflowX={'auto'}
+        shadow={'inner'}
+        bg={'bg.50'}
       >
-
         <FretboardWidget
           tunning={tunning}
           onAddMarker={addMarker}
@@ -53,14 +55,26 @@ export default function MainPage() {
       </Flex>
       <Flex
         direction={'column'}
+        p={2}
       >
-        <h2>Acordes</h2>
-        <Flex>
+        <Center>
+          <Text
+            as={'h1'}
+          >Acordes</Text>
+        </Center>
+        {chords.length === 0 ? (<Flex>
+          <Text
+            as={'i'}
+            color={'fg.500'}
+          >Nenhum acorde encontrado.</Text>
+
+        </Flex>) : (<Flex>
           <ChordsWidget
             chords={chords}
           />
 
-        </Flex>
+        </Flex>)}
+
       </Flex>
 
     </Flex>

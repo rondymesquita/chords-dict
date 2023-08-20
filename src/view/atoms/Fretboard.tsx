@@ -1,10 +1,13 @@
-import { Box, Flex, Square } from '@chakra-ui/react';
+import {
+  Box, Flex, Square, Text
+} from '@chakra-ui/react';
 
 interface FretboardProps {
   frets: number
+  showFretNumbers: boolean
 }
 
-export default function Dot() {
+export function Dot() {
   return (
     <Square
       bgColor={'primary.50'}
@@ -17,11 +20,30 @@ export default function Dot() {
     ></Square>
   )
 }
+export function FretNumber({ number }: {number: number}) {
+  return (
+    <Square
+      position={'absolute'}
+      // bgColor={'primary.100'}
+      bottom={'-20px'}
+      left={'35%'}
+      size={'12px'}
+      margin={'auto'}
+      borderRadius={'2xl'}
+      // border={'1px solid var(--chakra-colors-primary-300)'}
+      // dropShadow={'2xl'}
+      // sx={{ boxShadow: 'inset 0px 1px 2px -1px var(--chakra-colors-primary-700)' }}
+    ><Text
+        fontSize={'small'}
+        color={'fg.400'}
+      >{number}</Text></Square>
+  )
+}
 
 
-export function Fretboard({ frets=22 }: FretboardProps) {
+export function Fretboard({ frets=22, showFretNumbers= true }: FretboardProps) {
   const dotsPosition: number[] = [
-    3,5,7,9,12,15
+    3,5,7,9,12,15,17,19,21
   ].map(n => n-1)
   return (
     <Box
@@ -34,6 +56,7 @@ export function Fretboard({ frets=22 }: FretboardProps) {
         flexDirection={'row'}
         position={'relative'}
         py={'1px'}
+        // border={'1px solid red'}
       >
         {/* frets */}
         <Flex
@@ -44,17 +67,26 @@ export function Fretboard({ frets=22 }: FretboardProps) {
             return (
               <Flex
                 key={index}
-                // bgColor={'yellow.100'}
-                height={'100%'}
-                width={'50px'}
-                borderRight={'2px'}
-                borderColor={'secondary.900'}
-                flexDirection={'column'}
-                justifyContent={'center'}
-                alignContent={'center'}
-
+                position={'relative'}
+                width={'100%'}
+                // border={'1px solid red'}
               >
-                {dotsPosition.includes(index) && <Dot/>}
+                {dotsPosition.includes(index) && <FretNumber
+                  number={index + 1}
+                />}
+
+                <Flex
+                  // bgColor={'yellow.100'}
+                  height={'100%'}
+                  width={'50px'}
+                  borderRight={'2px'}
+                  borderColor={'secondary.900'}
+                  flexDirection={'column'}
+                  justifyContent={'center'}
+                  alignContent={'center'}
+                >
+                  {dotsPosition.includes(index) && <Dot/>}
+                </Flex>
               </Flex>
             );
           })}
