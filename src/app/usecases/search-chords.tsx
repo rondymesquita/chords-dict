@@ -9,7 +9,6 @@ import { Scale } from '../rules/scale';
 export const searchChordsUseCase = () => {
   const searchChords = (markers: Array<Marker>): Array<Chord> => {
     const matchedChords: Array<Chord> = []
-    // const note = 'D'
     chromaticScale.forEach((note: Note) => {
       const scale = new Scale(note)
       const chordMatcher = new ChordMatcher()

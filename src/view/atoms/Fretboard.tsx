@@ -30,10 +30,8 @@ export function FretNumber({ number }: {number: number}) {
       size={'12px'}
       margin={'auto'}
       borderRadius={'2xl'}
-      // border={'1px solid var(--chakra-colors-primary-300)'}
-      // dropShadow={'2xl'}
-      // sx={{ boxShadow: 'inset 0px 1px 2px -1px var(--chakra-colors-primary-700)' }}
-    ><Text
+    >
+      <Text
         fontSize={'small'}
         color={'fg.400'}
       >{number}</Text></Square>

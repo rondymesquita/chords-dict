@@ -17,7 +17,6 @@ export default function MainPage() {
 
   const tunning: Note[] = 'EBGDAE'.split('').map((n) => n as Note);
 
-
   const searchChord = () => {
     cleanChords()
     const chordsResult = searchChords(markers)
@@ -53,6 +52,7 @@ export default function MainPage() {
           markers={markers}
         />
       </Flex>
+
       <Flex
         direction={'column'}
         p={2}
@@ -62,6 +62,7 @@ export default function MainPage() {
             as={'h1'}
           >Acordes</Text>
         </Center>
+
         {chords.length === 0 ? (<Flex>
           <Text
             as={'i'}

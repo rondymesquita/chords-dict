@@ -1,3 +1,4 @@
+import { Text } from '@chakra-ui/react'
 import React from 'react'
 
 import { Chord as ChordModel } from '../../model'
@@ -8,10 +9,8 @@ interface ChordProps {
 }
 export default function Chord({ chord }: ChordProps) {
   return (
-    <div><p>
-      {/* <Flex></Flex> */}
+    <Text>
       {chord.rootNote}{chord.name}
-
-    </p></div>
+    </Text>
   )
 }

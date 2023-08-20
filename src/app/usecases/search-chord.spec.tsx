@@ -32,7 +32,7 @@ describe('search chord', ()=>{
     // expect(matches[0].name).toEqual(ChordName.MAJOR)
     // expect(matches[0].rootNote).toEqual('D')
   })
-  it.only('should not match D Major if there is a note outside of major intervals', () => {
+  it.only('should match Major and 7-minor', () => {
     const { searchChords } = searchChordsUseCase()
     const markers = [
       new Marker({ note: 'F#' }),
@@ -44,7 +44,7 @@ describe('search chord', ()=>{
     const matches = searchChords(markers)
     console.log({ matches });
 
-    expect(matches.length).toEqual(1)
+    expect(matches.length).toEqual(2)
     expect(matches[0].name).toEqual(ChordName.MAJOR)
     expect(matches[0].rootNote).toEqual('D')
   })
