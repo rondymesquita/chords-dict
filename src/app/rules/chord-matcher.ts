@@ -1,56 +1,56 @@
-import {
-  Chord,Interval, IntervalRule, Marker, Note 
-} from '../../model'
-import { Match } from '../../model/match.model'
-import { ScaleData } from '../data/scale';
+import { Chord,Interval, Marker } from '../../model'
 import { Scale } from './scale';
 
 export class ChordMatcher {
-  match(markers: Array<Marker>, scale: Scale, chord: Chord): boolean{
+  constructor(public scale: Scale, public chord: Chord) {}
+  match(markers: Array<Marker>): boolean{
+    // log{markers}
+    // console.log({ markers });
 
 
-    const mappedIntervals: Interval[] = []
+    const mappedIntervals = new Set<Interval>()
+    // get matchin intervals of scale from given markers
     markers.forEach((marker: Marker) => {
-      const foundInterval = scale.intervals.find((interval: Interval) => {
+      const foundInterval = this.scale.intervals.find((interval: Interval) => {
         return marker.note === interval.note
       })
       if (foundInterval) {
-        mappedIntervals.push(foundInterval)
+        mappedIntervals.add(foundInterval)
       }
     })
 
-    // console.log({ chordInterval: chord.intervals });
-    // console.log({ mappedIntervals });
+    // console.log({ name: this.chord.name, markers, mappedIntervals });
+
 
     /**
-     * number of matched intervals for the given chord
+     * from mappedIntervals, get correspoding chord when all intervals are equals
      */
-    let isMatch = true
-    const matchedIntervals = new Set()
-    for(let i =0; i < mappedIntervals.length; i++){
-      const interval = mappedIntervals[i]
+    const matchedIntervals = new Set<Interval>()
+    mappedIntervals.forEach((interval) => {
+      // console.log({ interval });
 
-      const chordInterval = chord.intervals.find((i) => i.name === interval.name && i.note === interval.note)
+      const chordInterval = this.chord.intervals.find((i) => i.name === interval.name && i.note === interval.note)
       if (chordInterval) {
         matchedIntervals.add(chordInterval)
       } else {
-        isMatch = false
-        break
+        // isMatch = false
+        return
       }
-    }
+    })
+    // console.log({ matchedIntervals });
 
 
 
-    if (isMatch && matchedIntervals.size === chord.intervals.length) {
+    let isMatch = true
+    // if (isMatch && matchedIntervals.size === this.chord.intervals.length) {
+    if (matchedIntervals.size === this.chord.intervals.length) {
+      // if (isMatch && matchedIntervals.size >= this.chord.intervals.length) {
       isMatch = true
     } else {
       isMatch = false
     }
-    // console.log({ chordIntervalCount: chord.intervals.length });
-    // console.log({ matchedIntervalCount: mappedIntervals.length });
-    // console.log({ matchedIntervals });
-    // console.log({ isMatch });
 
+    // console.log(isMatch, this.chord.name, matchedIntervals.size, this.chord.intervals.length);
     return isMatch
 
   }

@@ -63,6 +63,12 @@ export default function MainPage() {
           >Acordes</Text>
         </Center>
 
+        {/* <Flex>
+          <Debug
+            {...{ ...markers }}
+          />
+        </Flex> */}
+
         {chords.length === 0 ? (<Flex>
           <Text
             as={'i'}

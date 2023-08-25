@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { ChordName, Marker } from '../../model';
+import { ChordType, Marker } from '../../model';
 import { searchChordsUseCase } from './search-chords';
 
 describe('search chord', ()=>{
@@ -14,7 +14,7 @@ describe('search chord', ()=>{
     ]
     const matches = searchChords(markers)
     expect(matches.length).toEqual(1)
-    expect(matches[0].name).toEqual(ChordName.MAJOR)
+    expect(matches[0].name).toEqual(ChordType.MAJOR)
     expect(matches[0].rootNote).toEqual('D')
   })
 
@@ -45,7 +45,23 @@ describe('search chord', ()=>{
     console.log({ matches });
 
     expect(matches.length).toEqual(2)
-    expect(matches[0].name).toEqual(ChordName.MAJOR)
+    expect(matches).toMatchObject([{ name: '6', rootNote: 'D' },{ name: '7m', rootNote: 'B' }])
+  })
+
+  it('should match D Major with B on bass', () => {
+    const { searchChords } = searchChordsUseCase()
+    const markers = [
+      new Marker({ note: 'F#' }),
+      new Marker({ note: 'D', }),
+      new Marker({ note: 'A', }),
+      new Marker({ note: 'D', }),
+      new Marker({ note: 'B', }),//outside
+    ]
+    const matches = searchChords(markers)
+    console.log({ matches });
+
+    expect(matches.length).toEqual(2)
+    expect(matches[0].name).toEqual(ChordType.MAJOR)
     expect(matches[0].rootNote).toEqual('D')
   })
 })

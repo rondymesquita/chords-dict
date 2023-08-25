@@ -26,14 +26,20 @@ export class IntervalRule extends BaseModel {
     super();
     Object.assign(this, model);
   }
+  get id(){
+    return `${this.name}${this.step}`
+  }
 }
 
 export class Interval extends BaseModel {
   public name: IntervalName;
   public note: Note;
   public step: number;
-  constructor(model: Interval) {
+  constructor(model: Omit<Interval, 'id'>) {
     super();
     Object.assign(this, model);
+  }
+  get id(){
+    return `${this.name}${this.note}`
   }
 }

@@ -7,7 +7,7 @@ export class Match extends BaseModel{
   isMatch: boolean
 
   constructor(params: Match) {
-    super()
+    super({})
     Object.assign(this, params)
 
     // this.id = `${this.fret}-${this.string}`

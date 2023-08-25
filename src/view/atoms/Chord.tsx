@@ -10,7 +10,7 @@ interface ChordProps {
 export default function Chord({ chord }: ChordProps) {
   return (
     <Text>
-      {chord.rootNote}{chord.name}
+      {chord.fullName}
     </Text>
   )
 }

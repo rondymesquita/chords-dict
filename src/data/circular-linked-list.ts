@@ -31,6 +31,11 @@ export class CircularLinkedList<T> {
   get(index: number) {
     return this.list[index];
   }
+
+  getRandom() {
+    const index = Math.floor(Math.random() * this.list.length)
+    return this.list[index];
+  }
   stepUp(step: number) {
     let item = this.get(this.index);
     let count = 0

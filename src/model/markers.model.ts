@@ -1,17 +1,14 @@
-import {
-  BaseModel
-} from '.';
-import {
-  Note
-} from './note.model';
+import { BaseModel } from '.';
+import { Note } from './note.model';
 
 export class Marker extends BaseModel{
   public note: Note;
   public fret: number;
   public string: number;
   constructor(model: Partial<Marker>) {
-    super()
+    super({})
     Object.assign(this, model);
     this.id = `${this.fret}-${this.string}`
+    // this.id = sha1(this)
   }
 }
